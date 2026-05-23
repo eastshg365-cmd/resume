@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>佟筱钰 | 个人简历</title>
+  <meta name="description" content="佟筱钰个人简历 — 上海市民办桃李园实验学校优秀毕业生，热爱科技探究与艺术的全面发展型学生" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --sidebar:   #161b22;
+      --card:      #1c2333;
+      --border:    #30363d;
+      --gold:      #e6a817;
+      --gold-dim:  #9a6f0d;
+      --blue:      #58a6ff;
+      --teal:      #39d0b5;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --dimmer:    #484f58;
+      --radius:    12px;
+      --sans:      'Noto Sans SC', 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════════════ */
+    .resume {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      box-shadow: 0 0 80px rgba(0,0,0,.8);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SIDEBAR
+    ═══════════════════════════════════════════════════ */
+    .sidebar {
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: -120px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(230,168,23,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Profile */
+    .profile { text-align: center; }
+
+    .photo-ring {
+      display: inline-block;
+      padding: 4px;
+      border-radius: 50%;
+      background: conic-gradient(var(--gold), var(--teal), var(--blue), var(--gold));
+      animation: spin-ring 8s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes spin-ring {
+      to { filter: hue-rotate(360deg); }
+    }
+
+    .photo-ring img {
+      display: block;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--sidebar);
+    }
+
+    .name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold), #fff 60%, var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+
+    .name-en {
+      font-size: .78rem;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    /* Contact */
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .contact-list .icon {
+      width: 28px; height: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+    .contact-list a { color: var(--muted); text-decoration: none; }
+    .contact-list a:hover { color: var(--gold); }
+
+    /* Sidebar Section Header */
+    .s-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .s-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold-dim), transparent);
+    }
+
+    /* Skills tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: .75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      transition: all .25s;
+    }
+    .tag:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+    /* Skill bars */
+    .skill-bars { display: flex; flex-direction: column; gap: 10px; }
+    .skill-bar { }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .bar-track {
+      height: 5px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      transform-origin: left;
+      animation: bar-in 1.2s ease forwards;
+      transform: scaleX(0);
+    }
+    @keyframes bar-in { to { transform: scaleX(1); } }
+
+    /* Education */
+    .edu-school { font-weight: 600; font-size: .88rem; color: var(--text); margin-bottom: 2px; }
+    .edu-meta { font-size: .75rem; color: var(--muted); margin-bottom: 10px; }
+    .edu-scores {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 10px;
+    }
+    .score-item { font-size: .75rem; }
+    .score-label { color: var(--muted); }
+    .score-val { color: var(--gold); font-weight: 600; }
+
+    /* Fitness trend */
+    .fitness-trend {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .fit-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .fit-bar-bg { width: 100%; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .fit-bar-inner {
+      background: linear-gradient(to top, var(--gold), var(--teal));
+      border-radius: 4px;
+      animation: bar-up .9s ease forwards;
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+    @keyframes bar-up { to { transform: scaleY(1); } }
+    .fit-label { font-size: .65rem; color: var(--muted); }
+    .fit-val { font-size: .7rem; color: var(--text); font-weight: 600; }
+
+    /* ═══════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════ */
+    .main {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      background: var(--bg);
+    }
+
+    /* Section */
+    .section { animation: fade-up .6s ease both; }
+    .section:nth-child(2) { animation-delay: .1s; }
+    .section:nth-child(3) { animation-delay: .2s; }
+    .section:nth-child(4) { animation-delay: .3s; }
+    .section:nth-child(5) { animation-delay: .4s; }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, rgba(230,168,23,.2), rgba(57,208,181,.1));
+      border: 1px solid rgba(230,168,23,.3);
+      border-radius: 8px;
+      display: grid; place-items: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: .04em;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    /* Profile summary */
+    .summary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      font-size: .875rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* Awards */
+    .award-list { display: flex; flex-direction: column; gap: 10px; }
+    .award-item {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      transition: all .25s;
+    }
+    .award-item:hover {
+      border-color: var(--gold-dim);
+      transform: translateX(3px);
+      box-shadow: -3px 0 0 var(--gold);
+    }
+    .award-year {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--gold);
+      padding: 3px 0;
+      text-align: center;
+      background: rgba(230,168,23,.08);
+      border-radius: 6px;
+      height: fit-content;
+    }
+    .award-name { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .award-meta { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+    .award-badge {
+      display: inline-block;
+      font-size: .65rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-area   { background: rgba(88,166,255,.15); color: var(--blue); border: 1px solid rgba(88,166,255,.3); }
+    .badge-nation { background: rgba(57,208,181,.15); color: var(--teal); border: 1px solid rgba(57,208,181,.3); }
+    .badge-school { background: rgba(230,168,23,.12); color: var(--gold); border: 1px solid rgba(230,168,23,.3); }
+
+    /* Research */
+    .research-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+    }
+    .research-card:hover { border-color: var(--gold-dim); box-shadow: 0 4px 20px rgba(230,168,23,.1); }
+    .research-card + .research-card { margin-top: 12px; }
+
+    .research-title { font-size: .92rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .research-meta {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .research-meta span::before { content: '· '; }
+    .research-meta span:first-child::before { content: ''; }
+    .research-body { font-size: .82rem; color: #c9d1d9; line-height: 1.75; }
+    .research-quote {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: rgba(57,208,181,.06);
+      border-left: 2px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      font-size: .78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .research-quote strong { color: var(--teal); font-style: normal; }
+
+    .courses-row {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .courses-row strong { color: var(--text); }
+    .course-chip {
+      display: inline-block;
+      background: rgba(88,166,255,.08);
+      border: 1px solid rgba(88,166,255,.2);
+      color: var(--blue);
+      border-radius: 99px;
+      padding: 2px 10px;
+      margin: 3px 3px 0 0;
+      font-size: .72rem;
+    }
+
+    /* Activities */
+    .activity-grid { display: flex; flex-direction: column; gap: 10px; }
+    .activity-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .activity-period {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(230,168,23,.07);
+      border: 1px solid rgba(230,168,23,.2);
+      border-radius: 6px;
+      padding: 4px 8px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .activity-content { font-size: .83rem; color: #c9d1d9; line-height: 1.7; }
+    .activity-content strong { color: var(--text); }
+
+    /* ═══════════════════════════════════════════════════
+       PRINT
+    ═══════════════════════════════════════════════════ */
+    @media print {
+      body { background: white; }
+      .resume { box-shadow: none; max-width: 100%; }
+      .sidebar { background: #1e293b; }
+      .bar-fill, .fit-bar-inner { animation: none; transform: scaleX(1); }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════ */
+    @media (max-width: 720px) {
+      .resume { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .main { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume">
+
+  <!-- ════════════════════ SIDEBAR ════════════════════ -->
+  <aside class="sidebar">
+
+    <!-- Profile -->
+    <div class="profile">
+      <div class="photo-ring">
+        <img src="Profile.png" alt="佟筱钰" />
+      </div>
+      <h1 class="name">佟筱钰</h1>
+      <p class="name-en">TONG Xiaoyu</p>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <p class="s-title">联系方式</p>
+      <ul class="contact-list">
+        <li>
+          <span class="icon">📱</span>
+          <span>+86 177 2108 0653</span>
+        </li>
+        <li>
+          <span class="icon">✉️</span>
+          <a href="mailto:eastsh365@163.com">eastsh365@163.com</a>
+        </li>
+        <li>
+          <span class="icon">📍</span>
+          <span>上海市嘉定区</span>
+        </li>
+        <li>
+          <span class="icon">🎂</span>
+          <span>2010年9月</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Skills Tags -->
+    <div>
+      <p class="s-title">特长领域</p>
+      <div class="tags">
+        <span class="tag">英语写作</span>
+        <span class="tag">古筝演奏</span>
+        <span class="tag">书法</span>
+        <span class="tag">科技探究</span>
+        <span class="tag">公益服务</span>
+        <span class="tag">生态调研</span>
+      </div>
+    </div>
+
+    <!-- Skill Bars -->
+    <div>
+      <p class="s-title">专项技能</p>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="skill-label"><span>英语（CEFR B2+）</span><span>优秀</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%;animation-delay:.2s"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>普通话（母语）</span><span>母语</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;animation-delay:.35s"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>古筝（十级）</span><span>专业级</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:83%;animation-delay:.5s"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-label"><span>书法（九级）</span><span>高级</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%;animation-delay:.65s"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div>
+      <p class="s-title">教育背景</p>
+      <div class="edu-school">上海市民办桃李园实验学校</div>
+      <div class="edu-meta">初中 · 2022 — 2025 · 上海嘉定</div>
+      <div class="edu-scores">
+        <div class="score-item"><span class="score-label">数学 </span><span class="score-val">100</span></div>
+        <div class="score-item"><span class="score-label">历史 </span><span class="score-val">100</span></div>
+        <div class="score-item"><span class="score-label">英语 </span><span class="score-val">96.5</span></div>
+        <div class="score-item"><span class="score-label">语文 </span><span class="score-val">88.5</span></div>
+        <div class="score-item"><span class="score-label">物理 </span><span class="score-val">90</span></div>
+        <div class="score-item"><span class="score-label">化学 </span><span class="score-val">83</span></div>
+        <div class="score-item"><span class="score-label">生命科学 </span><span class="score-val">87</span></div>
+        <div class="score-item"><span class="score-label">艺术 </span><span class="score-val">A</span></div>
+      </div>
+
+      <!-- Fitness trend bars -->
+      <div style="margin-top:12px">
+        <div class="skill-label" style="font-size:.72rem;color:var(--muted);margin-bottom:6px">
+          体质测试（逐年提升）
+        </div>
+        <div class="fitness-trend">
+          <div class="fit-bar-wrap">
+            <div class="fit-val">78.9</div>
+            <div class="fit-bar-bg" style="height:36px">
+              <div class="fit-bar-inner" style="height:52%;animation-delay:.3s"></div>
+            </div>
+            <div class="fit-label">六年级</div>
+          </div>
+          <div class="fit-bar-wrap">
+            <div class="fit-val">82.5</div>
+            <div class="fit-bar-bg" style="height:36px">
+              <div class="fit-bar-inner" style="height:68%;animation-delay:.45s"></div>
+            </div>
+            <div class="fit-label">七年级</div>
+          </div>
+          <div class="fit-bar-wrap">
+            <div class="fit-val">79.5</div>
+            <div class="fit-bar-bg" style="height:36px">
+              <div class="fit-bar-inner" style="height:57%;animation-delay:.6s"></div>
+            </div>
+            <div class="fit-label">八年级</div>
+          </div>
+          <div class="fit-bar-wrap">
+            <div class="fit-val" style="color:var(--gold)">86.6</div>
+            <div class="fit-bar-bg" style="height:36px">
+              <div class="fit-bar-inner" style="height:88%;animation-delay:.75s"></div>
+            </div>
+            <div class="fit-label">九年级</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ════════════════════ MAIN ════════════════════ -->
+  <main class="main">
+
+    <!-- Summary -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">👤</div>
+        <h2 class="section-title">个人简介</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="summary">
+        成绩优异、兴趣广泛的全面发展型学生。数学、历史满分，英语96.5分，多门学科位列班级前列；荣获<strong>省级英语写作奖</strong>与<strong>区级科技创新奖</strong>，独立完成人工智能与生态调研双领域探究报告。古筝十级、书法九级，坚持舞蹈十余年，累计社会实践 <strong>286 小时</strong>，现为共青团预备团员，展现出全面发展的综合素质与社会责任感。
+      </p>
+    </section>
+
+    <!-- Awards -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">🏆</div>
+        <h2 class="section-title">荣誉奖项</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="award-list">
+
+        <div class="award-item">
+          <div class="award-year">2025</div>
+          <div>
+            <div class="award-name">
+              嘉定区青少年科学思创挑战活动 二等奖（个人）
+              <span class="award-badge badge-area">区级</span>
+            </div>
+            <div class="award-meta">嘉定区教育局主办 · 科技创新类</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2025</div>
+          <div>
+            <div class="award-name">
+              全国中学生英语作文征集项目 二等奖
+              <span class="award-badge badge-nation">省级</span>
+            </div>
+            <div class="award-meta">历经五轮修改 · 备赛周期约两个月 · 教育部</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2024</div>
+          <div>
+            <div class="award-name">
+              "红领巾奖章"基础章 · 特色章（连续两届）
+              <span class="award-badge badge-area">区级</span>
+            </div>
+            <div class="award-meta">2023—24学年 · 2024—25学年 · 团委、市教委、市少工委</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2023<br/>2024</div>
+          <div>
+            <div class="award-name">
+              第八·九届全国"宪法卫士"网上学习竞答 上海赛区
+              <span class="award-badge badge-area">区级</span>
+            </div>
+            <div class="award-meta">连续两届参赛认定 · 教育部、市教委主办</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2023</div>
+          <div>
+            <div class="award-name">
+              才艺节硬笔书法比赛 二等奖；才艺达人秀 三等奖
+              <span class="award-badge badge-school">校级</span>
+            </div>
+            <div class="award-meta">上海市民办桃李园实验学校</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2025</div>
+          <div>
+            <div class="award-name">
+              桃李园艺术节民乐 个人三等奖；书法社团连续两年评定优秀
+              <span class="award-badge badge-school">校级</span>
+            </div>
+            <div class="award-meta">上海市民办桃李园实验学校 · 2022—2025</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">🔬</div>
+        <h2 class="section-title">科技探究与学术研究</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="research-card">
+        <div class="research-title">《解锁机器人智能：视觉语言模型的力量》</div>
+        <div class="research-meta">
+          <span>探究学习报告</span>
+          <span>独立完成</span>
+          <span>指导教师：齐婷婷</span>
+          <span>2025年5月 · 校级公开交流</span>
+        </div>
+        <div class="research-body">
+          系统研究VLMs（视觉语言模型）如何融合计算机视觉与自然语言处理，梳理零样本学习、场景理解等核心技术；深入分析教育、智慧城市、工厂安全等领域的实际应用逻辑，聚焦字树科技等国内企业的前沿创新贡献。
+        </div>
+        <div class="research-quote">
+          <strong>指导教师评语：</strong>选题兼具科技性与探索价值，充分展现了学生的创新思维与前沿视野。逻辑严密，思考深入，信息检索、归纳分析与科学表达能力突出，是一份<strong>高质量探究报告</strong>。
+        </div>
+      </div>
+
+      <div class="research-card" style="margin-top:12px">
+        <div class="research-title">《阳澄湖水质与当地经济发展关系报告》</div>
+        <div class="research-meta">
+          <span>社会考察报告</span>
+          <span>独立完成</span>
+          <span>2023学年第一学期</span>
+        </div>
+        <div class="research-body">
+          对阳澄湖核心区域开展水质采样调研，分析水质状况与大闸蟹养殖业的相关性；提出禁用冷冻鱼虾投喂等生态保护建议，推动养殖环境可持续发展，展现对生态与经济议题的深入思考与实践能力。
+        </div>
+      </div>
+
+      <div class="courses-row" style="margin-top:12px">
+        <strong>其他探究型课程：</strong>
+        <span class="course-chip">缤纷小菜园种植之旅 2025</span>
+        <span class="course-chip">探秘小菜园生命之旅 2024</span>
+        <span class="course-chip">人类历史上的流行病 2024</span>
+        <span class="course-chip">光影流年·探索光与时间 2023</span>
+        <span class="course-chip">中外现代音乐鉴赏 2023</span>
+        <span class="course-chip">少儿卡通动漫探究 2022</span>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">🌟</div>
+        <h2 class="section-title">课外活动与社会实践</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="activity-grid">
+
+        <div class="activity-item">
+          <div class="activity-period">2023</div>
+          <div class="activity-content">
+            <strong>上海交通大学附中数学夏校</strong> — 系统学习微积分、线性代数与 Python 编程，提前接触大学先修数学课程，拓展理工思维边界
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-period">2022 — 2025</div>
+          <div class="activity-content">
+            <strong>社会实践 286 小时</strong>（社会考察 115h · 公益劳动 91h · 职业体验 56h · 安全实训 24h）；参与六一爱心义卖、春节送春联志愿服务；雏鹰争章：立志章 · 铭言章 · 接力章 · 珍爱章
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-period">2022 — 2025</div>
+          <div class="activity-content">
+            <strong>艺术特长</strong>：古筝十级（校汇报演出 · 三等奖）· 书法九级（计划 2025 年挑战十级）· 舞蹈坚持十余年 · 曾参与才艺节多项比赛
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-period">2025</div>
+          <div class="activity-content">
+            <strong>共青团预备团员</strong>：经全班公开投票与支部教师综合评定入选，参加团课系统学习，2025 年本学期正式入团，深化公民责任与青年担当意识
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-period">2022 — 2025</div>
+          <div class="activity-content">
+            <strong>书法社团成员</strong>（连续两年考核评定<strong>优秀</strong>）；积极参与校内外德育活动，包括嘉定区"红领巾讲解员"红色实践体验活动（区级）
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
